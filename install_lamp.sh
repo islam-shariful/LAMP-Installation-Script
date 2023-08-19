@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Check if the user is root
+if [ "$EUID" -ne 0 ]; then
+    echo ">>>>> This script requires superuser privileges. Please run with sudo."
+    exit 1
+fi
+
 # Update package lists and install LAMP components
 echo ">>>>> Updating package lists and installing LAMP components..."
 apt update
